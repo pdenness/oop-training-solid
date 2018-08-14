@@ -91,3 +91,8 @@ gradle-app.setting
 \.idea/modules/
 
 target/
+\.idea/codeStyles/
+
+\.idea/
+
+grad-training-programme-sesh-1\.iml
