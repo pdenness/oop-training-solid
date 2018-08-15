@@ -7,7 +7,8 @@ public class App_l {
 
     public static void main(String[] args) {
 
-        /* The business requires that a charity sponsored products are available */
+        /* The business requires that a charity sponsored products are available.
+        Refactor CharityProduct to comply with Liskov principle */
 
         CharityProduct charityCola = new CharityProduct(StockType.FANTA);
         charityCola.setCharityDonation(CharityDonation.CHILDPROTECTION);

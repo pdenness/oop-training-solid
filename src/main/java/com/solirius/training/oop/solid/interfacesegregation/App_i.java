@@ -15,7 +15,9 @@ public class App_i {
         throws OutOfStockException, InsufficientPaymentException, CashPaymentsNotSupportedException, CardPaymentsNotSupported {
 
         /* The business requires that we support card payments for our vending machines.
-        In addition, our designer indicates that more changes are in the backlog. */
+        In addition, our designer indicates that more changes are in the backlog.
+
+        Refactor BasicVendingMachine_i to comply with interface segregation principle */
 
         BasicVendingMachine_i basicVendingMachine = new BasicVendingMachine_i(Stock.getStock());
 

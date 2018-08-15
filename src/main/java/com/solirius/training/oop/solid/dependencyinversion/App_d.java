@@ -12,14 +12,15 @@ public class App_d {
     public static void main(String[] args)
         throws InsufficientPaymentException, OutOfStockException {
 
-        /* The business requires that advertising is more persuasive but we need different messages for specific demographics */
+        /* The business has provided advertisement modules which need installing into our vending machines.
+        Refactor EmotionalAdVendingMachine & FancyAdVendingMachine to comply with the dependency inversion principle. */
 
         Card hsbc = new Card(20);
 
-        AdvertisementDisplay fancyAdvertisingPanel = new FancyAdvertisementDisplay();
-        AdvertisementDisplay guiltAdvertisingPanel = new GuiltAdvertismentDisplay();
-        VendingMachine_d VendingMachine = new VendingMachine_d(Stock.getStock(), guiltAdvertisingPanel);
-        Product cola = VendingMachine.purchaseProduct(StockType.COLA, hsbc);
+        BasicVendingMachine_d emotionalAdVendingMachine = new EmotionalAdVendingMachine(Stock.getStock());
+        Product cola = emotionalAdVendingMachine.purchaseProduct(StockType.COLA, hsbc);
 
+        BasicVendingMachine_d fancyAdVendingMachine = new FancyAdVendingMachine(Stock.getStock());
+        Product sprite = fancyAdVendingMachine.purchaseProduct(StockType.SPRITE, hsbc);
     }
 }

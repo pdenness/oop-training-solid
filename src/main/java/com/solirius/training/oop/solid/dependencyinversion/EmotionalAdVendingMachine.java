@@ -5,17 +5,18 @@ import com.solirius.training.oop.exception.OutOfStockException;
 import com.solirius.training.oop.payment.Card;
 import com.solirius.training.oop.products.Product;
 import com.solirius.training.oop.products.StockType;
+import com.solirius.training.oop.solid.dependencyinversion.advertising.EmotionalAdvertismentDisplay;
 import org.apache.commons.collections4.MultiValuedMap;
 
-public class VendingMachine_d {
+public class EmotionalAdVendingMachine implements BasicVendingMachine_d {
+
+    /* This class breaks dependency inversion principle because the advertising class is tightly coupled with this class.*/
 
     private MultiValuedMap<StockType, Product> stock;
-    private AdvertisementDisplay advertisementDisplay;
+    private EmotionalAdvertismentDisplay advertisementDisplay;
 
-    VendingMachine_d(MultiValuedMap<StockType, Product> stock,
-        AdvertisementDisplay advertisementDisplay) {
+    public EmotionalAdVendingMachine(MultiValuedMap<StockType, Product> stock) {
         this.stock = stock;
-        this.advertisementDisplay = advertisementDisplay;
     }
 
     public void stockUp(MultiValuedMap<StockType, Product> stock) {
@@ -29,6 +30,7 @@ public class VendingMachine_d {
     public Product purchaseProduct(StockType stockType, Card card)
         throws OutOfStockException, InsufficientPaymentException {
 
+        advertisementDisplay = new EmotionalAdvertismentDisplay();
         advertisementDisplay.displayContent(stockType);
 
         Product selectedProduct = stock.get(stockType)
